@@ -38,10 +38,10 @@ O diagrama mostra as **zonas de confiança** (Internet, DMZ/Edge, VPC privada e 
 | ID | Ameaça | Componente | DREAD |
 |---|---|---|---|
 | V01 | DDoS | CloudFront | **8.4** |
-| V09 | SQL Injection | Lambda / API | **8.2** |
-| V12 | Exposição de secrets | Secrets Manager | **8.2** |
+| V09 | Injection (SQL, NoSQL, comando) | API Gateway | **8.2** |
+| V12 | Exposição de secrets | Lambda | **8.2** |
 | V20 | SQL Injection | RDS PostgreSQL | **8.2** |
-| V25 | Vazamento de dados | S3 (PII/PCI) | **8.2** |
+| V25 | Data breach (ransomware) | S3 (PII/PCI) | **8.2** |
 | V07 | Broken Authentication | API Gateway | **8.0** |
 | V11 | Code Injection | Lambda | **7.2** |
 
