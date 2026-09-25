@@ -33,6 +33,61 @@ O diagrama mostra as **zonas de confiança** (Internet, DMZ/Edge, VPC privada e 
 | Resposta a incidentes | Plano de resposta e recomendações |
 | Parte 2 | Questões objetivas sobre threat modeling, com justificativa |
 
+### Riscos críticos (P1)
+
+| ID | Ameaça | Componente | DREAD |
+|---|---|---|---|
+| V01 | DDoS | CloudFront | **8.4** |
+| V09 | SQL Injection | Lambda / API | **8.2** |
+| V12 | Exposição de secrets | Secrets Manager | **8.2** |
+| V20 | SQL Injection | RDS PostgreSQL | **8.2** |
+| V25 | Vazamento de dados | S3 (PII/PCI) | **8.2** |
+| V07 | Broken Authentication | API Gateway | **8.0** |
+| V11 | Code Injection | Lambda | **7.2** |
+
+## Tecnologias utilizadas
+
+- **STRIDE:** classificação das ameaças (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege);
+- **DREAD:** nota de risco (Damage, Reproducibility, Exploitability, Affected Users, Discoverability);
+- **PCI DSS Level 1:** requisitos de segurança para dados de cartão;
+- **Borda:** Amazon CloudFront, Route 53, AWS WAF e API Gateway;
+- **Aplicação:** AWS Lambda e Amazon ECS Fargate;
+- **Dados:** Amazon RDS PostgreSQL, DynamoDB, S3 e EFS;
+- **Segurança e monitoramento:** KMS, Secrets Manager, GuardDuty, CloudWatch, X-Ray, Security Hub, Inspector e Macie.
+
+## Estrutura do repositório
+
+```text
+fiap-sec-cp3/
+├── docs/
+│   ├── arch.gif                 # Diagrama do threat model (zonas, serviços e vetores de ataque)
+│   ├── threat-model.md          # Análise completa: STRIDE, DREAD, controles, PCI DSS e Parte 2
+│   └── FinanceShop-ThreatModel.png
+└── README.md                    # Visão macro do projeto
+```
+
+## Fluxo de funcionamento
+
+1. Mapear a arquitetura do FinanceShop e separar os componentes em **zonas de confiança**: Internet, DMZ/Edge, VPC privada e camada de segurança.
+2. Identificar os **threat agents**: hacker externo, insider e bots automatizados.
+3. Aplicar o **STRIDE** em cada componente (CloudFront, S3, WAF, API Gateway, Lambda, ECS, RDS, DynamoDB, EFS e Route 53).
+4. Calcular o **DREAD** de cada vulnerabilidade e priorizar de P1 a P3.
+5. Definir os **controles de segurança** de cada ameaça com serviços AWS.
+6. Mapear os controles nos **12 requisitos do PCI DSS** e montar o plano de resposta a incidentes.
+
+## Como validar a entrega
+
+Em uma revisão da entrega, cada ameaça do diagrama deve ter classificação STRIDE, nota DREAD e controle correspondente na análise.
+
+Pontos principais de validação:
+
+- diagrama com as quatro zonas de confiança e os vetores de ataque;
+- 29 vulnerabilidades identificadas, com componente, categoria STRIDE e impacto;
+- matriz DREAD com a fórmula e a prioridade de cada ameaça;
+- mitigação definida para todas as ameaças críticas (P1);
+- os 12 requisitos do PCI DSS Level 1 mapeados;
+- plano de resposta a incidentes e as questões da Parte 2 respondidas.
+
 > A análise completa (STRIDE por componente, matriz DREAD, controles, PCI DSS, resposta a incidentes e a Parte 2) está em **[docs/threat-model.md](docs/threat-model.md)**.
 
 ---
